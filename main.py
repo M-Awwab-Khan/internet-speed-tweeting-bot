@@ -16,8 +16,8 @@ TWITTER_PASSWORD = '&zwj2xGe)XsC,%v'
 
 class InternetSpeedTwitterBot:
     def __init__(self) -> None:
-        self.down = 0
-        self.up = 0
+        self.down = 14.3
+        self.up = 9.7
         self.driver = webdriver.Chrome(options=chrome_options)
 
     def get_internet_speed(self):
@@ -29,7 +29,7 @@ class InternetSpeedTwitterBot:
 
     def tweet_at_provider(self):
         self.driver.get('https://twitter.com/')
-        wait = WebDriverWait(self.driver, 5)
+        wait = WebDriverWait(self.driver, 30)
         signin_button = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div/div[2]/main/div/div/div[1]/div/div/div[3]/div[5]/a')))
         signin_button.click()
         email_field = wait.until(EC.presence_of_element_located((By.NAME, 'text')))
@@ -42,4 +42,5 @@ class InternetSpeedTwitterBot:
 
 if __name__ == '__main__':
     bot = InternetSpeedTwitterBot()
+    # bot.get_internet_speed()
     bot.tweet_at_provider()
