@@ -27,6 +27,13 @@ class InternetSpeedTwitterBot:
         self.down = float(self.driver.find_element(By.CLASS_NAME, 'download-speed').text)
         self.up = float(self.driver.find_element(By.CLASS_NAME, 'upload-speed').text)
 
+    def tweet_at_provider(self):
+        self.driver.get('https://twitter.com/')
+        self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/main/div/div/div[1]/div/div/div[3]/div[5]/a').click()
+        self.driver.find_element(By.NAME, 'text').send_keys(TWITTER_EMAIL, Keys.TAB, Keys.ENTER)
+        self.driver.find_element(By.NAME, 'password').send_keys(TWITTER_PASSWORD, Keys.ENTER)
+
+
 
 
 if __name__ == '__main__':
