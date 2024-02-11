@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 import time
 
 chrome_options = webdriver.ChromeOptions()
@@ -11,8 +10,8 @@ chrome_options.add_experimental_option('detach', True)
 
 PROMISED_DOWN = 20
 PROMISED_UP = 20
-TWITTER_EMAIL = 'fakeofawwab@gmail.com'
-TWITTER_PASSWORD = '&zwj2xGe)XsC,%v'
+TWITTER_EMAIL = 'YOUR TWITTER EMAIL'
+TWITTER_PASSWORD = 'YOUR TWITTER PASSWORD'
 
 class InternetSpeedTwitterBot:
     def __init__(self) -> None:
