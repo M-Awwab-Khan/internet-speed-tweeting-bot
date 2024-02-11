@@ -8,6 +8,10 @@ from selenium.common.exceptions import TimeoutException
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('detach', True)
 
+PROMISED_DOWN = 16
+PROMISED_UP = 16
+TWITTER_EMAIL = 'fakeofawwab@gmail.com'
+TWITTER_PASSWORD = '&zwj2xGe)XsC,%v'
 
 driver = webdriver.Chrome(options=chrome_options)
 driver.get('https://www.speedtest.net/')
