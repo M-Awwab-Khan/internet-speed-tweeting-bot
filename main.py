@@ -13,6 +13,13 @@ PROMISED_UP = 16
 TWITTER_EMAIL = 'fakeofawwab@gmail.com'
 TWITTER_PASSWORD = '&zwj2xGe)XsC,%v'
 
-driver = webdriver.Chrome(options=chrome_options)
-driver.get('https://www.speedtest.net/')
+class InternetSpeedTwitterBot:
+    def __init__(self) -> None:
+        self.down = 0
+        self.up = 0
+        self.driver = webdriver.Chrome(options=chrome_options)
+
+    def get_internet_speed(self):
+        self.driver.get('https://www.speedtest.net/')
+
 
