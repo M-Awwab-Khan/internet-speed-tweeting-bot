@@ -29,13 +29,17 @@ class InternetSpeedTwitterBot:
 
     def tweet_at_provider(self):
         self.driver.get('https://twitter.com/')
-        self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/main/div/div/div[1]/div/div/div[3]/div[5]/a').click()
-        self.driver.find_element(By.NAME, 'text').send_keys(TWITTER_EMAIL, Keys.TAB, Keys.ENTER)
-        self.driver.find_element(By.NAME, 'password').send_keys(TWITTER_PASSWORD, Keys.ENTER)
+        wait = WebDriverWait(self.driver, 5)
+        signin_button = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div/div[2]/main/div/div/div[1]/div/div/div[3]/div[5]/a')))
+        signin_button.click()
+        email_field = wait.until(EC.presence_of_element_located((By.NAME, 'text')))
+        email_field.send_keys(TWITTER_EMAIL, Keys.TAB, Keys.ENTER)
+        password_field = wait.until(EC.presence_of_element_located((By.NAME, 'password')))
+        password_field.send_keys(TWITTER_PASSWORD, Keys.ENTER)
 
 
 
 
 if __name__ == '__main__':
     bot = InternetSpeedTwitterBot()
-    bot.get_internet_speed()
+    bot.tweet_at_provider()
