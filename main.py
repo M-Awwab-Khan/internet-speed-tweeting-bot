@@ -16,8 +16,8 @@ TWITTER_PASSWORD = '&zwj2xGe)XsC,%v'
 
 class InternetSpeedTwitterBot:
     def __init__(self) -> None:
-        self.down = 14.3
-        self.up = 9.7
+        self.down = 0
+        self.up = 0
         self.driver = webdriver.Chrome(options=chrome_options)
 
     def get_internet_speed(self):
@@ -36,11 +36,16 @@ class InternetSpeedTwitterBot:
         email_field.send_keys(TWITTER_EMAIL, Keys.TAB, Keys.ENTER)
         password_field = wait.until(EC.presence_of_element_located((By.NAME, 'password')))
         password_field.send_keys(TWITTER_PASSWORD, Keys.ENTER)
+        wait = WebDriverWait(self.driver, 30)
+        text_field = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'br[data-text="true"]')))
+        msg = f"Hey Internet Provider, why is my internet speed is {self.down} down/{self.up} up when I am pay for {PROMISED_DOWN} down/{PROMISED_UP} up"
+        text_field.send_keys(msg)
+        self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div[2]/main/div/div/div/div/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div[2]/div/div/div/div[3]/div/span/span').click()
 
 
 
 
 if __name__ == '__main__':
     bot = InternetSpeedTwitterBot()
-    # bot.get_internet_speed()
+    bot.get_internet_speed()
     bot.tweet_at_provider()
