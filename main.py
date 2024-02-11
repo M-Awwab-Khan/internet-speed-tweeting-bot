@@ -26,7 +26,6 @@ class InternetSpeedTwitterBot:
         time.sleep(60)
         self.down = float(self.driver.find_element(By.CLASS_NAME, 'download-speed').text)
         self.up = float(self.driver.find_element(By.CLASS_NAME, 'upload-speed').text)
-        print(f"Download Speed: {self.down}\nUpload Speed: {self.up}")
 
 
 
